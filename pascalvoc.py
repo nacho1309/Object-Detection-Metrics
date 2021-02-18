@@ -202,18 +202,8 @@ currentPath = os.path.dirname(os.path.abspath(__file__))
 
 VERSION = '0.2 (beta)'
 
-with open('message.txt', 'r') as f:
-    message = f'\n\n{f.read()}\n\n'
-
-print(message)
-
 parser = argparse.ArgumentParser(
-    prog='Object Detection Metrics - Pascal VOC',
-    description=
-    f'{message}\nThis project applies the most popular metrics used to evaluate object detection '
-    'algorithms.\nThe current implemention runs the Pascal VOC metrics.\nFor further references, '
-    'please check:\nhttps://github.com/rafaelpadilla/Object-Detection-Metrics',
-    epilog="Developed by: Rafael Padilla (rafael.padilla@smt.ufrj.br)")
+    prog='Object Detection Metrics - Pascal VOC')
 parser.add_argument('-v', '--version', action='version', version='%(prog)s ' + VERSION)
 # Positional arguments
 # Mandatory
@@ -324,6 +314,7 @@ if len(errors) != 0:
     sys.exit()
 
 # Check if path to save results already exists and is not empty
+"""
 if os.path.isdir(savePath) and os.listdir(savePath):
     key_pressed = ''
     while key_pressed.upper() not in ['Y', 'N']:
@@ -335,7 +326,7 @@ if os.path.isdir(savePath) and os.listdir(savePath):
     if key_pressed.upper() == 'N':
         print('Process canceled')
         sys.exit()
-
+"""
 # Clear folder and save results
 shutil.rmtree(savePath, ignore_errors=True)
 os.makedirs(savePath)
